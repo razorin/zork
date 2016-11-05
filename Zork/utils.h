@@ -1,12 +1,13 @@
+#pragma once
+#ifndef UTILS_H
+#define UTILS_H
+
 #include "globals.h"
 #include <string>
 #include <vector>
 
 using namespace std;
 
-#pragma once
-#ifndef UTILS_H
-#define UTILS_H
 class Utils
 {
 public:

@@ -2,13 +2,11 @@
 #include "utils.h"
 
 
-Utils::Utils()
-{
+Utils::Utils() {
 }
 
 
-Utils::~Utils()
-{
+Utils::~Utils() {
 }
 
 const vector<string> * Utils::ParseCommand(const string command) {

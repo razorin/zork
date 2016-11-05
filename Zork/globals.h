@@ -11,7 +11,8 @@
 #define PLAYER_ACTION_LOOK "look" 
 #define PLAYER_ACTION_TAKE "take"
 #define PLAYER_ACTION_DROP "drop"
-#define PLAYER_ACTION_DROP "help"
+#define PLAYER_ACTION_HELP "help"
+#define PLAYER_ACTION_GO "go"
 
 /*
 	IGNORE WORDS
@@ -20,6 +21,13 @@
 #define IGNORE_WORD_TO "to"
 #define IGNORE_WORD_A "a"
 #define IGNORE_WORD_AND "and"
+
+enum GAME_DIRECTIONS {
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST
+};
 
 
 #endif // !GLOBALS_H
