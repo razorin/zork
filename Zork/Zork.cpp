@@ -6,23 +6,32 @@
 #include <string>
 #include <iostream>
 #include "globals.h"
+#include "utils.h"
 
 
 using namespace std;
 
 int main()
 {
-	string arguments = "";
+	string command = "";
 	char key = 0;
-	while (1) {
+	while (key != KEYBOARD_KEY_ESCAPE) {		
 		key = _getch();
-		if (key == KEYBOARD_KEY_ESCAPE)
-			break;
-		arguments += key;
+
+		if (key == KEYBOARD_KEY_ENTER) {
+			auto arguments = Utils::ParseCommand(command);
+			for (auto it = arguments->begin(); it != arguments->end(); ++it) {
+				cout << *it << endl;
+			}
+			
+			command = "";
+			continue;
+		}
+
+		command += key;
+		cout << "Command: " << command << endl;
 	}
 	
-
-
 	return 0;
 }
 
