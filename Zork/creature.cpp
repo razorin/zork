@@ -12,6 +12,6 @@ Creature::~Creature() {
 }
 
 void Creature::Update() {
-	cout << " Creature!!! " << endl;
+	//cout << " Creature!!! " << endl;
 }
 

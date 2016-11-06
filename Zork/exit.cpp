@@ -17,5 +17,5 @@ Exit::~Exit() {
 }
 
 void Exit::Update() {
-	cout << "Exit!! " << endl;
+	//cout << "Exit!! " << endl;
 }

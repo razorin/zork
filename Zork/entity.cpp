@@ -19,11 +19,17 @@ Entity::~Entity() {
 }
 
 void Entity::Update() {
-
+	for each (auto element in contains) {
+		element->Update();
+	}
 }
 
 void Entity::Look() const {
 	cout << "\t" << name << endl;
 	cout << "_____________" << endl;
 	cout << description << endl;
+}
+
+void Entity::Show() const {
+	cout << name << "\t" << description << endl;
 }

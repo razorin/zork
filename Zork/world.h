@@ -4,6 +4,7 @@
 
 #include "entity.h"
 #include <vector>
+#include "player.h"
 
 class World
 {
@@ -15,6 +16,7 @@ public:
 
 
 	vector<Entity*> entities;
+	Player *player;
 
 
 };

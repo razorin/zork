@@ -32,7 +32,7 @@ int main() {
 		}
 
 		command += key;
-		cout << "Command: " << command << endl;
+		//cout << "Command: " << command << endl;
 	}
 
 	return 0;

@@ -16,6 +16,7 @@ public:
 	virtual ~Entity();
 	virtual void Update();
 	virtual void Look() const;
+	virtual void Show() const;
 
 	string name;
 	string description;

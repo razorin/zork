@@ -7,6 +7,7 @@ class Item : public Entity
 {
 public:
 	Item();
+	Item(const string name, const string description);
 	virtual ~Item();
 	void Update();
 };

@@ -13,6 +13,7 @@
 #define PLAYER_ACTION_DROP "drop"
 #define PLAYER_ACTION_HELP "help"
 #define PLAYER_ACTION_GO "go"
+#define PLAYER_ACTION_INVENTORY "inventory"
 
 /*
 	IGNORE WORDS
