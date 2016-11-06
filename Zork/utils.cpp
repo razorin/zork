@@ -46,9 +46,15 @@ const vector<string> * Utils::ParseCommand(const string command) {
 }
 
 const bool Utils::IsToken(const string word) {
-	return (word == PLAYER_ACTION_LOOK || word == PLAYER_ACTION_TAKE);
+	return (IsEquals(word, PLAYER_ACTION_LOOK) || IsEquals(word, PLAYER_ACTION_TAKE) || IsEquals(word, PLAYER_ACTION_DROP));
 }
 
 const bool Utils::IsIgnoredWord(const string word) {
-	return (word == IGNORE_WORD_A || word == IGNORE_WORD_THE || word == IGNORE_WORD_TO);
+	return (IsEquals(word, IGNORE_WORD_A) || IsEquals(word, IGNORE_WORD_THE) || IsEquals(word, IGNORE_WORD_TO));
+}
+
+const bool Utils::IsEquals(string a, string b) {
+	for (auto & c : a) c = toupper(c);
+	for (auto & c : b) c = toupper(c);
+	return  a == b;
 }

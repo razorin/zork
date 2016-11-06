@@ -23,16 +23,16 @@ int main() {
 		if (key == KEYBOARD_KEY_ENTER) {
 			auto arguments = Utils::ParseCommand(command);
 			world->Update(arguments);
-			for (auto it = arguments->begin(); it != arguments->end(); ++it) {
+			/*for (auto it = arguments->begin(); it != arguments->end(); ++it) {
 				cout << *it << endl;
-			}
+			}*/
 
 			command = "";
 			continue;
 		}
 
 		command += key;
-		//cout << "Command: " << command << endl;
+		cout << command << endl;
 	}
 
 	return 0;

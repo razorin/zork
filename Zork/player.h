@@ -13,7 +13,10 @@ public:
 	void Do(const vector<string> *arguments);
 private:
 	void Look() const;
+	void Look(const string name) const;
 	void Inventory() const;
+	void Take(const string name);
+	void Drop(const string name);
 };
 
 #endif // !PLAYER_H

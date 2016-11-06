@@ -17,6 +17,7 @@ public:
 	virtual void Update();
 	virtual void Look() const;
 	virtual void Show() const;
+	virtual Entity * Find(const string name) const;
 
 	string name;
 	string description;
