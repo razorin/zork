@@ -23,11 +23,28 @@
 #define IGNORE_WORD_A "a"
 #define IGNORE_WORD_AND "and"
 
+/*
+	GAME DIRECTIONS STRINGS
+*/
+#define GAME_DIRECTION_NORTH "north"
+#define GAME_DIRECTION_SOUTH "south"
+#define GAME_DIRECTION_EAST "east"
+#define GAME_DIRECTION_WEST "west"
+
 enum GAME_DIRECTIONS {
+	NONE, 
 	NORTH,
 	SOUTH,
 	EAST,
 	WEST
+};
+
+enum ENTITY_TYPE {
+	ROOM,
+	EXIT,
+	ITEM,
+	CREATURE,
+	PLAYER
 };
 
 

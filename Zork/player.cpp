@@ -5,6 +5,7 @@
 #include "globals.h"
 #include "item.h"
 #include "utils.h"
+#include "exit.h"
 
 using namespace std;
 
@@ -40,7 +41,10 @@ void Player::Do(const vector<string> *arguments) {
 			Take(arguments->at(1));
 		} else if (Utils::IsEquals(arguments->at(0), PLAYER_ACTION_DROP)) {
 			Drop(arguments->at(1));
+		} else if (Utils::IsEquals(arguments->at(0), PLAYER_ACTION_GO)) {
+			Go(arguments->at(1));
 		}
+
 		break;
 	default:
 		cout << "I don't understand you" << endl;
@@ -48,8 +52,30 @@ void Player::Do(const vector<string> *arguments) {
 	}
 }
 
+void Player::Go(const string name_direction) {
+	GAME_DIRECTIONS direction = GAME_DIRECTIONS::NONE;
+	if (Utils::IsEquals(name_direction, GAME_DIRECTION_NORTH)) {
+		direction = GAME_DIRECTIONS::NORTH;
+	} else if (Utils::IsEquals(name_direction, GAME_DIRECTION_EAST)) {
+		direction = GAME_DIRECTIONS::EAST;
+	} else if (Utils::IsEquals(name_direction, GAME_DIRECTION_WEST)) {
+		direction = GAME_DIRECTIONS::WEST;
+	} else if (Utils::IsEquals(name_direction, GAME_DIRECTION_SOUTH)) {
+		direction = GAME_DIRECTIONS::SOUTH;
+	}
+
+	if (direction == GAME_DIRECTIONS::NONE)
+		cout << "Invalid direction to go" << endl;
+	else {
+		Exit *exit = location->GetExit(direction);
+		location = exit->destination;
+		
+		Look();
+	}
+}
+
 void Player::Take(const string name) {
-	Item *item = (Item *) location->Find(name);
+	Item *item = (Item *) location->Find(ENTITY_TYPE::ITEM, name);
 	if (item != NULL) {
 		location->contains.remove(item);
 		contains.push_back(item);
@@ -60,7 +86,7 @@ void Player::Take(const string name) {
 }
 
 void Player::Drop(const string name) {
-	Item *item = (Item *)Find(name);
+	Item *item = (Item *)Find(ENTITY_TYPE::ITEM, name);
 	if (item != NULL) {
 		location->contains.push_back(item);
 		contains.remove(item);

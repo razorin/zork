@@ -8,7 +8,7 @@ Item::Item(){
 }
 
 Item::Item(const string name, const string description) : Entity(name, description) {
-
+	type = ENTITY_TYPE::ITEM;
 }
 
 

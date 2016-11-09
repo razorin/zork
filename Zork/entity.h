@@ -4,6 +4,7 @@
 
 #include <string>
 #include <list>
+#include "globals.h"
 
 using namespace std;
 
@@ -18,10 +19,12 @@ public:
 	virtual void Look() const;
 	virtual void Show() const;
 	virtual Entity * Find(const string name) const;
+	virtual Entity* Find(const ENTITY_TYPE type, const string name) const;
 
 	string name;
 	string description;
 	list<Entity*> contains;
+	ENTITY_TYPE type;
 
 };
 

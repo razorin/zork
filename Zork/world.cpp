@@ -12,22 +12,32 @@ World::World() {
 	Item *item = new Item("Sword", "Increment your attack (+3)");
 	//entities.push_back(item);
 
-	Room *room = new Room("Beach", "A nice beach");
-	Exit *exit = new Exit();
-	exit->destination = room;
-	exit->source = room;
-	exit->direction = GAME_DIRECTIONS::NORTH;
-	room->contains.push_back(exit);
-	room->contains.push_back(item);
+	Room *beach = new Room("Beach", "A nice beach");
+	Room *forest = new Room("Forest", "A dark forest");
+	Exit *beach_exit = new Exit("North Exit", "A pathfind", GAME_DIRECTIONS::NORTH);
+	Exit *forest_exit = new Exit("North Exit", "A pathfind", GAME_DIRECTIONS::SOUTH);
+	
+	beach_exit->destination = forest;
+	beach_exit->source = beach;
 
-	entities.push_back(room);
+	forest_exit->destination = beach;
+	forest_exit->source = forest;
+
+
+	//beach_exit->direction = GAME_DIRECTIONS::NORTH;
+	beach->contains.push_back(beach_exit);
+	beach->contains.push_back(item);
+
+	forest->contains.push_back(forest_exit);
+
+	entities.push_back(beach);
 	//entities.push_back(exit);
 
 	Creature *creature = new Creature();
 	entities.push_back(creature);
 
 	player = new Player();
-	player->location = room;
+	player->location = beach;
 	player->contains.push_back(item);
 	//entities.push_back(player);
 }

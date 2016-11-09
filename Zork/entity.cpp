@@ -35,11 +35,24 @@ void Entity::Show() const {
 	cout << name << "\t" << description << endl;
 }
 
-Entity* Entity::Find(const string name) const{
+Entity* Entity::Find(const string name) const {
 	Entity* result = NULL;
 
 	for each (auto element in contains) {
 		if (Utils::IsEquals(element->name, name)) {
+			result = element;
+			break;
+		}
+	}
+
+	return result;
+}
+
+Entity* Entity::Find(const ENTITY_TYPE type, const string name) const {
+	Entity* result = NULL;
+
+	for each (auto element in contains) {
+		if (Utils::IsEquals(element->name, name) && element->type == type) {
 			result = element;
 			break;
 		}

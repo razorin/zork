@@ -6,10 +6,12 @@
 #include "room.h"
 #include "utils.h"
 
+class Room;
+
 class Exit :
 	public Entity {
 public:
-	Exit();
+	Exit(const string name, const string description, const GAME_DIRECTIONS direction);
 	virtual ~Exit();
 	void Update();
 

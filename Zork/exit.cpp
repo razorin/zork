@@ -4,8 +4,9 @@
 
 using namespace std;
 
-Exit::Exit() {
-
+Exit::Exit(const string name, const string description, const GAME_DIRECTIONS direction) : Entity(name, description) {
+	type = ENTITY_TYPE::EXIT;
+	(this)->direction = direction;
 }
 
 

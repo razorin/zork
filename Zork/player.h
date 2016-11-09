@@ -17,6 +17,7 @@ private:
 	void Inventory() const;
 	void Take(const string name);
 	void Drop(const string name);
+	void Go(const string name_direction);
 };
 
 #endif // !PLAYER_H
