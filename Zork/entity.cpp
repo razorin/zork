@@ -39,7 +39,7 @@ Entity* Entity::Find(const string name) const {
 	Entity* result = NULL;
 
 	for each (auto element in contains) {
-		if (Utils::IsEquals(element->name, name)) {
+		if (CommandParser::IsEquals(element->name, name)) {
 			result = element;
 			break;
 		}
@@ -52,11 +52,19 @@ Entity* Entity::Find(const ENTITY_TYPE type, const string name) const {
 	Entity* result = NULL;
 
 	for each (auto element in contains) {
-		if (Utils::IsEquals(element->name, name) && element->type == type) {
+		if (CommandParser::IsEquals(element->name, name) && element->type == type) {
 			result = element;
 			break;
 		}
 	}
 
 	return result;
+}
+
+bool Entity::operator==(const Entity &other) const {
+	return (this->name == other.name && this->description == other.description);
+}
+
+bool Entity::operator!=(const Entity &other) const {
+	return !(*this == other);
 }

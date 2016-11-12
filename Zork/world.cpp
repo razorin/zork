@@ -14,21 +14,21 @@ World::World() {
 
 	Room *beach = new Room("Beach", "A nice beach");
 	Room *forest = new Room("Forest", "A dark forest");
-	Exit *beach_exit = new Exit("North Exit", "A pathfind", GAME_DIRECTIONS::NORTH);
-	Exit *forest_exit = new Exit("North Exit", "A pathfind", GAME_DIRECTIONS::SOUTH);
+	Exit *beach_forest_exit = new Exit("North Exit", "A pathfind", GAME_DIRECTIONS::NORTH);
+	//Exit *forest_exit = new Exit("North Exit", "A pathfind", GAME_DIRECTIONS::SOUTH);
 	
-	beach_exit->destination = forest;
-	beach_exit->source = beach;
+	beach_forest_exit->destination = forest;
+	beach_forest_exit->source = beach;
 
-	forest_exit->destination = beach;
-	forest_exit->source = forest;
+	//forest_exit->destination = beach;
+	//forest_exit->source = forest;
 
 
 	//beach_exit->direction = GAME_DIRECTIONS::NORTH;
-	beach->contains.push_back(beach_exit);
+	beach->contains.push_back(beach_forest_exit);
 	beach->contains.push_back(item);
 
-	forest->contains.push_back(forest_exit);
+	forest->contains.push_back(beach_forest_exit);
 
 	entities.push_back(beach);
 	//entities.push_back(exit);

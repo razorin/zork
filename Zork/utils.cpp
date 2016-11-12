@@ -2,14 +2,14 @@
 #include "utils.h"
 
 
-Utils::Utils() {
+CommandParser::CommandParser() {
 }
 
 
-Utils::~Utils() {
+CommandParser::~CommandParser() {
 }
 
-const vector<string> * Utils::ParseCommand(const string command) {
+const vector<string> * CommandParser::ParseCommand(const string command) {
 	vector<string> *result = new vector<string>();
 	string word = "";
 	string multiple_words = "";
@@ -22,13 +22,13 @@ const vector<string> * Utils::ParseCommand(const string command) {
 			if (is_last_element == true) {
 				word += *it;
 			}
-			if (Utils::IsToken(word)) {
+			if (CommandParser::IsToken(word)) {
 				if (multiple_words != "")
 					result->push_back(multiple_words);
 				result->push_back(word);
 				multiple_words = "";
 			}
-			else if (Utils::IsIgnoredWord(word) == false) {
+			else if (CommandParser::IsIgnoredWord(word) == false) {
 				if (is_last_element) {
 					multiple_words += word;
 					result->push_back(multiple_words);
@@ -45,15 +45,15 @@ const vector<string> * Utils::ParseCommand(const string command) {
 	return result;
 }
 
-const bool Utils::IsToken(const string word) {
+const bool CommandParser::IsToken(const string word) {
 	return (IsEquals(word, PLAYER_ACTION_GO) || IsEquals(word, PLAYER_ACTION_LOOK) || IsEquals(word, PLAYER_ACTION_TAKE) || IsEquals(word, PLAYER_ACTION_DROP));
 }
 
-const bool Utils::IsIgnoredWord(const string word) {
+const bool CommandParser::IsIgnoredWord(const string word) {
 	return (IsEquals(word, IGNORE_WORD_A) || IsEquals(word, IGNORE_WORD_THE) || IsEquals(word, IGNORE_WORD_TO));
 }
 
-const bool Utils::IsEquals(string a, string b) {
+const bool CommandParser::IsEquals(string a, string b) {
 	for (auto & c : a) c = toupper(c);
 	for (auto & c : b) c = toupper(c);
 	return  a == b;

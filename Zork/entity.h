@@ -21,6 +21,9 @@ public:
 	virtual Entity * Find(const string name) const;
 	virtual Entity* Find(const ENTITY_TYPE type, const string name) const;
 
+	virtual bool operator==(const Entity &other) const;
+	virtual bool operator!=(const Entity &other) const;
+
 	string name;
 	string description;
 	list<Entity*> contains;

@@ -26,22 +26,22 @@ void Player::Do(const vector<string> *arguments) {
 		cout << "I don't understand you" << endl;
 		break;
 	case 1:
-		if (Utils::IsEquals(arguments->at(0), PLAYER_ACTION_LOOK)) {
+		if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_LOOK)) {
 			Look();
-		} else if(Utils::IsEquals(arguments->at(0), PLAYER_ACTION_INVENTORY)){
+		} else if(CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_INVENTORY)){
 			Inventory();
 		} else{
 			cout << "I don't understand you" << endl;
 		}
 		break;
 	case 2:
-		if (Utils::IsEquals(arguments->at(0), PLAYER_ACTION_LOOK)) {
+		if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_LOOK)) {
 			Look(arguments->at(1));
-		} else if(Utils::IsEquals(arguments->at(0), PLAYER_ACTION_TAKE)){
+		} else if(CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_TAKE)){
 			Take(arguments->at(1));
-		} else if (Utils::IsEquals(arguments->at(0), PLAYER_ACTION_DROP)) {
+		} else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_DROP)) {
 			Drop(arguments->at(1));
-		} else if (Utils::IsEquals(arguments->at(0), PLAYER_ACTION_GO)) {
+		} else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_GO)) {
 			Go(arguments->at(1));
 		}
 
@@ -54,13 +54,13 @@ void Player::Do(const vector<string> *arguments) {
 
 void Player::Go(const string name_direction) {
 	GAME_DIRECTIONS direction = GAME_DIRECTIONS::NONE;
-	if (Utils::IsEquals(name_direction, GAME_DIRECTION_NORTH)) {
+	if (CommandParser::IsEquals(name_direction, GAME_DIRECTION_NORTH)) {
 		direction = GAME_DIRECTIONS::NORTH;
-	} else if (Utils::IsEquals(name_direction, GAME_DIRECTION_EAST)) {
+	} else if (CommandParser::IsEquals(name_direction, GAME_DIRECTION_EAST)) {
 		direction = GAME_DIRECTIONS::EAST;
-	} else if (Utils::IsEquals(name_direction, GAME_DIRECTION_WEST)) {
+	} else if (CommandParser::IsEquals(name_direction, GAME_DIRECTION_WEST)) {
 		direction = GAME_DIRECTIONS::WEST;
-	} else if (Utils::IsEquals(name_direction, GAME_DIRECTION_SOUTH)) {
+	} else if (CommandParser::IsEquals(name_direction, GAME_DIRECTION_SOUTH)) {
 		direction = GAME_DIRECTIONS::SOUTH;
 	}
 
@@ -68,9 +68,17 @@ void Player::Go(const string name_direction) {
 		cout << "Invalid direction to go" << endl;
 	else {
 		Exit *exit = location->GetExit(direction);
-		location = exit->destination;
+		if (exit != NULL) {
+			if(exit->direction == direction)
+				location = exit->destination;
+			else
+				location = exit->source;
+			Look();
+		}
+		else {
+			cout << "I can't go in that direction!!!" << endl;
+		}
 		
-		Look();
 	}
 }
 

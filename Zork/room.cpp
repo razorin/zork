@@ -25,10 +25,16 @@ Exit* Room::GetExit(const GAME_DIRECTIONS direction) {
 	for (auto it = contains.begin(); it != contains.end(); ++it) {
 		if ((*it)->type == ENTITY_TYPE::EXIT) {
 			Exit* ex = (Exit*)*it;
-			if (ex->direction == direction)
+			GAME_DIRECTIONS inverse = Utils::DirectionInverse(ex->direction);
+			if ((*ex->source) == (*this) && ex->direction == direction) {
 				return ex;
+			} else if ((*ex->destination) == (*this) &&  direction == inverse) {
+				return ex;
+			}
 		}
 	}
 
 	return NULL;
 }
+
+

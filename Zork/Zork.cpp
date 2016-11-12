@@ -21,7 +21,7 @@ int main() {
 		key = _getch();
 
 		if (key == KEYBOARD_KEY_ENTER) {
-			auto arguments = Utils::ParseCommand(command);
+			auto arguments = CommandParser::ParseCommand(command);
 			world->Update(arguments);
 
 			command = "";
