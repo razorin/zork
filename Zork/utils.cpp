@@ -56,7 +56,7 @@ const bool CommandParser::IsToken(const string word) {
 }
 
 const bool CommandParser::IsIgnoredWord(const string word) {
-	return (IsEquals(word, IGNORE_WORD_FROM) || IsEquals(word, IGNORE_WORD_A) || IsEquals(word, IGNORE_WORD_THE) || IsEquals(word, IGNORE_WORD_TO));
+	return (IsEquals(word, IGNORE_WORD_INTO) ||  IsEquals(word, IGNORE_WORD_FROM) || IsEquals(word, IGNORE_WORD_A) || IsEquals(word, IGNORE_WORD_THE) || IsEquals(word, IGNORE_WORD_TO));
 }
 
 const bool CommandParser::IsEquals(string a, string b) {
@@ -69,6 +69,13 @@ const string CommandParser::Trim(const string &s) {
 	auto wsfront = find_if_not(s.begin(), s.end(), [](int c) {return isspace(c);});
 	auto wsback = find_if_not(s.rbegin(), s.rend(), [](int c) {return isspace(c);}).base();
 	return (wsback <= wsfront ? std::string() : std::string(wsfront, wsback));
+}
+
+Utils::Utils() {
+}
+
+
+Utils::~Utils() {
 }
 
 const GAME_DIRECTIONS Utils::DirectionInverse(const GAME_DIRECTIONS direction) {

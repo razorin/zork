@@ -18,6 +18,7 @@ private:
 	void Take(const string name);
 	void Take(const string name, const string parent_name);
 	void Drop(const string name);
+	void Drop(const string name, const string parent_name);
 	void Go(const string name_direction);
 };
 

@@ -48,12 +48,34 @@ void Player::Do(const vector<string> *arguments) {
 	case 3:
 		if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_TAKE)) {
 			Take(arguments->at(1), arguments->at(2));
+		} else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_DROP)) {
+			Drop(arguments->at(1), arguments->at(2));
 		}
 
 		break;
 	default:
 		cout << "I don't understand you" << endl;
 		break;
+	}
+}
+
+void Player::Drop(const string name, const string container_name) {
+	Item *item = (Item *) Find(ENTITY_TYPE::ITEM, name);
+	if (item == NULL) {
+		cout << "You haven't any " << name << endl;
+	} else {
+		Item *container = (Item *)Find(ENTITY_TYPE::ITEM, container_name);
+		if (container == NULL) {
+			container = (Item *)location->Find(ENTITY_TYPE::ITEM, container_name);
+		}
+
+		if (container == NULL) {
+			cout << "There isn't any" << container_name << endl;
+		} else{
+			container->contains.push_back(item);
+			contains.remove(item);
+			cout << "Dropped" << endl;
+ 		}
 	}
 }
 
@@ -100,19 +122,21 @@ void Player::Take(const string name) {
 
 void Player::Take(const string name, const string parent_name) {
 	Item *parent_item = (Item *)location->Find(ENTITY_TYPE::ITEM, parent_name);
-	if (parent_item != NULL) {
+
+	if(parent_item == NULL)
+		parent_item = (Item *)Find(ENTITY_TYPE::ITEM, parent_name);
+	
+	if (parent_item == NULL) {
+		cout << "There isn't any" << parent_name << endl;
+	} else {
 		Item *item = (Item *)parent_item->Find(ENTITY_TYPE::ITEM, name);
 		if (item != NULL) {
-			location->contains.remove(item);
+			parent_item->contains.remove(item);
 			contains.push_back(item);
 			cout << "Taken" << endl;
+		} else {
+			cout << "There isn't any" << name << endl;
 		}
-		else {
-			cout << "There is not " << name << " in " << parent_name << endl;
-		}
-	}
-	else {
-		cout << "There is not such thing!" << endl;
 	}
 }
 

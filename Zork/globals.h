@@ -13,6 +13,7 @@
 #define PLAYER_ACTION_DROP "drop"
 #define PLAYER_ACTION_HELP "help"
 #define PLAYER_ACTION_GO "go"
+//#define PLAYER_ACTION_PUT "put"
 #define PLAYER_ACTION_INVENTORY "inventory"
 
 /*
@@ -23,6 +24,7 @@
 #define IGNORE_WORD_A "a"
 #define IGNORE_WORD_AND "and"
 #define IGNORE_WORD_FROM "from"
+#define IGNORE_WORD_INTO "into"
 
 /*
 	GAME DIRECTIONS STRINGS
