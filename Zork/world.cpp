@@ -10,6 +10,8 @@ World::World() {
 	entities = vector<Entity*>();
 	
 	Item *item = new Item("Sword", "Increment your attack (+3)");
+	Item *chest = new Item("Chest", "A chest that maybe contains something");
+	chest->contains.push_back(item);
 	//entities.push_back(item);
 
 	Room *beach = new Room("Beach", "A nice beach");
@@ -26,7 +28,8 @@ World::World() {
 
 	//beach_exit->direction = GAME_DIRECTIONS::NORTH;
 	beach->contains.push_back(beach_forest_exit);
-	beach->contains.push_back(item);
+	//beach->contains.push_back(item);
+	beach->contains.push_back(chest);
 
 	forest->contains.push_back(beach_forest_exit);
 

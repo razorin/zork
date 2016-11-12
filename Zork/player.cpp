@@ -44,6 +44,11 @@ void Player::Do(const vector<string> *arguments) {
 		} else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_GO)) {
 			Go(arguments->at(1));
 		}
+		break;
+	case 3:
+		if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_TAKE)) {
+			Take(arguments->at(1), arguments->at(2));
+		}
 
 		break;
 	default:
@@ -93,6 +98,24 @@ void Player::Take(const string name) {
 	}
 }
 
+void Player::Take(const string name, const string parent_name) {
+	Item *parent_item = (Item *)location->Find(ENTITY_TYPE::ITEM, parent_name);
+	if (parent_item != NULL) {
+		Item *item = (Item *)parent_item->Find(ENTITY_TYPE::ITEM, name);
+		if (item != NULL) {
+			location->contains.remove(item);
+			contains.push_back(item);
+			cout << "Taken" << endl;
+		}
+		else {
+			cout << "There is not " << name << " in " << parent_name << endl;
+		}
+	}
+	else {
+		cout << "There is not such thing!" << endl;
+	}
+}
+
 void Player::Drop(const string name) {
 	Item *item = (Item *)Find(ENTITY_TYPE::ITEM, name);
 	if (item != NULL) {
@@ -107,7 +130,14 @@ void Player::Drop(const string name) {
 
 void Player::Look(const string name) const {
 	Entity *item = Find(name);
-	item->Look();
+	if (item != NULL)
+		item->Look();
+	else
+		item = location->Find(name);
+		if(item != NULL)
+			item->Look();
+		else
+			cout << "There is not such item" << endl;
 }
 
 void Player::Look() const {

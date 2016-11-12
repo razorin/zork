@@ -16,6 +16,7 @@ private:
 	void Look(const string name) const;
 	void Inventory() const;
 	void Take(const string name);
+	void Take(const string name, const string parent_name);
 	void Drop(const string name);
 	void Go(const string name_direction);
 };

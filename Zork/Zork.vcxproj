@@ -142,9 +142,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="creature.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="exit.h" />
@@ -173,6 +170,10 @@
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="world.cpp" />
     <ClCompile Include="Zork.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\LICENSE.md" />
+    <None Include="..\README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

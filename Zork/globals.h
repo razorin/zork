@@ -22,6 +22,7 @@
 #define IGNORE_WORD_TO "to"
 #define IGNORE_WORD_A "a"
 #define IGNORE_WORD_AND "and"
+#define IGNORE_WORD_FROM "from"
 
 /*
 	GAME DIRECTIONS STRINGS

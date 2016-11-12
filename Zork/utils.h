@@ -5,6 +5,7 @@
 #include "globals.h"
 #include <string>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -18,6 +19,7 @@ public:
 	static const bool IsIgnoredWord(const string word);
 	static const bool IsEquals(string a, string b);
 
+	static const string Trim(const string &s);
 };
 
 class Utils {
@@ -25,22 +27,8 @@ public:
 	Utils();
 	virtual ~Utils();
 
-	static const GAME_DIRECTIONS DirectionInverse(const GAME_DIRECTIONS direction) { 
-		if (direction == GAME_DIRECTIONS::NORTH) {
-			return GAME_DIRECTIONS::SOUTH;
-		}
-		else if (direction == GAME_DIRECTIONS::SOUTH) {
-			return GAME_DIRECTIONS::NORTH;
-		}
-		else if (direction == GAME_DIRECTIONS::EAST) {
-			return GAME_DIRECTIONS::WEST;
-		}
-		else if (direction == GAME_DIRECTIONS::WEST) {
-			return GAME_DIRECTIONS::EAST;
-		}
-
-		return GAME_DIRECTIONS::NONE;
-	}
+	static const GAME_DIRECTIONS DirectionInverse(const GAME_DIRECTIONS direction);
+	
 };
 
 #endif // !UTILS_H

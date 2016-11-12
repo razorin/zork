@@ -37,6 +37,12 @@ const vector<string> * CommandParser::ParseCommand(const string command) {
 					multiple_words += word + " ";;
 				}
 			}
+			else if (CommandParser::IsIgnoredWord(word) == true) {
+				if (multiple_words != "") {
+					result->push_back(multiple_words);
+					multiple_words = "";
+				}
+			}
 
 			word = "";
 		}
@@ -50,11 +56,35 @@ const bool CommandParser::IsToken(const string word) {
 }
 
 const bool CommandParser::IsIgnoredWord(const string word) {
-	return (IsEquals(word, IGNORE_WORD_A) || IsEquals(word, IGNORE_WORD_THE) || IsEquals(word, IGNORE_WORD_TO));
+	return (IsEquals(word, IGNORE_WORD_FROM) || IsEquals(word, IGNORE_WORD_A) || IsEquals(word, IGNORE_WORD_THE) || IsEquals(word, IGNORE_WORD_TO));
 }
 
 const bool CommandParser::IsEquals(string a, string b) {
 	for (auto & c : a) c = toupper(c);
 	for (auto & c : b) c = toupper(c);
-	return  a == b;
+	return  Trim(a) == Trim(b);
 }
+
+const string CommandParser::Trim(const string &s) {
+	auto wsfront = find_if_not(s.begin(), s.end(), [](int c) {return isspace(c);});
+	auto wsback = find_if_not(s.rbegin(), s.rend(), [](int c) {return isspace(c);}).base();
+	return (wsback <= wsfront ? std::string() : std::string(wsfront, wsback));
+}
+
+const GAME_DIRECTIONS Utils::DirectionInverse(const GAME_DIRECTIONS direction) {
+	if (direction == GAME_DIRECTIONS::NORTH) {
+		return GAME_DIRECTIONS::SOUTH;
+	}
+	else if (direction == GAME_DIRECTIONS::SOUTH) {
+		return GAME_DIRECTIONS::NORTH;
+	}
+	else if (direction == GAME_DIRECTIONS::EAST) {
+		return GAME_DIRECTIONS::WEST;
+	}
+	else if (direction == GAME_DIRECTIONS::WEST) {
+		return GAME_DIRECTIONS::EAST;
+	}
+
+	return GAME_DIRECTIONS::NONE;
+}
+
