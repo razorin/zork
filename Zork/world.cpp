@@ -8,6 +8,7 @@
 #include "globals.h"
 #include "monster.h"
 #include "npc.h"
+#include "quest.h"
 
 World::World() {
 	entities = vector<Entity*>();
@@ -39,9 +40,13 @@ World::World() {
 	Monster *giant_crab = new Monster("Giant crab", "A huge crab", beach, 5, 2);
 	Monster *troll = new Monster("Troll", "A huge troll", beach, 5, 2);
 	
-	Npc *fisher = new Npc("Old fisher", "An old man that seems to have been fishing all his life", dock, "Hey kid! Are you the hunter we were hoping for? You should talk to the mayor. He is in the village going east.", NPC_TYPE::SPEAKER);
+	Npc *fisher = new Npc("Old fisherman", "An old man that seems to have been fishing all his life", dock, "Hey kid! Are you the hunter we were hoping for? You should talk to the mayor. He is in the village going east.", NPC_TYPE::SPEAKER);
 	Npc *blacksmith = new Npc("Blacksmith", "A big strong man", village, "Do you need some weapons? I have the best prices in the village", NPC_TYPE::TRADER);
 	Npc *chaman = new Npc("Chaman", "An old and strange man", chaman_hut, "I have some potions that maybe help to you in your journey. Do you want to buy something?", NPC_TYPE::TRADER);
+	Npc *mayor = new Npc("Mayor", "", village, "I know you are here for the troll that killed some of us two weeks ago but could you help us with other problems? We would be very grateful. If you want more info about the troll go east and talk to explorers.", NPC_TYPE::SPEAKER);
+
+	Quest *crab_request = new Quest(giant_crab, 50, "There is a giant crab on the beach. It is south of here. Lately it is attacking the fishermen and the children who are going to play there. Could you handle it?");
+	mayor->quests.push_back(crab_request);
 
 	blacksmith->contains.push_back(spear);
 	blacksmith->contains.push_back(dagger);
@@ -74,6 +79,7 @@ World::World() {
 	village->contains.push_back(dock_village);
 	village->contains.push_back(blacksmith);
 	village->contains.push_back(village_beach);
+	village->contains.push_back(mayor);
 
 	chaman_hut->contains.push_back(chaman);
 	chaman_hut->contains.push_back(beach_chaman);

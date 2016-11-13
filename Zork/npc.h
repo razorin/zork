@@ -1,5 +1,10 @@
 #pragma once
 #include "creature.h"
+#include "quest.h"
+#include <vector>
+
+using namespace std;
+
 class Npc :
 	public Creature {
 public:
@@ -9,5 +14,6 @@ public:
 
 	string dialog;
 	NPC_TYPE npc_type;
+	vector<Quest*> quests;
 };
 

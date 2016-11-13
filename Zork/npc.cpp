@@ -2,6 +2,7 @@
 #include "npc.h"
 #include "item.h"
 #include <iostream>
+#include "player.h"
 
 using namespace std;
 
@@ -17,19 +18,33 @@ Npc::~Npc() {
 }
 
 void Npc::Speak() const {
-	if (contains.size() > 0) {
 		cout << name << " says: \"" << dialog << "\"" << endl;
-		if (npc_type == NPC_TYPE::TRADER) {
-			cout << "Name\t\tDescription\t\tPrice" << endl;
-			for each (auto entity in contains) {
-				if (entity->type == ENTITY_TYPE::ITEM) {
-					Item *item = (Item *)entity;
-					cout << item->name << "\t\t"<< item->description << "\t\t" << item->price << endl;
+		for each (auto quest in quests) {
+			if (!quest->rewarded) {
+				if (quest->monster->IsLive()) {
+					cout << quest->message << endl;
+				} else {
+					cout << "Thank you for kill the " << quest->monster->name << endl;
+					cout << "Take this for your help: " << quest->gold << " gold pieces" << endl;
+					Player *player = (Player *)location->Find(ENTITY_TYPE::PLAYER, "player");
+					player->gold += quest->gold;
+					quest->rewarded = true;
 				}
 			}
 		}
-	} else{
-		cout << "Sorry but I have anything to sell right now." << endl;
-	}
+		if (npc_type == NPC_TYPE::TRADER) {
+			if (contains.size() > 0) {
+				cout << "Name\t\tDescription\t\tPrice" << endl;
+				for each (auto entity in contains) {
+					if (entity->type == ENTITY_TYPE::ITEM) {
+						Item *item = (Item *)entity;
+						cout << item->name << "\t\t" << item->description << "\t\t" << item->price << endl;
+					}
+				}
+			}
+			else {
+				cout << "Sorry but I have anything to sell right now." << endl;
+			}
+		}
 }
 
