@@ -52,7 +52,7 @@ const vector<string> * CommandParser::ParseCommand(const string command) {
 }
 
 const bool CommandParser::IsToken(const string word) {
-	return (IsEquals(word, PLAYER_ACTION_GO) || IsEquals(word, PLAYER_ACTION_LOOK) || IsEquals(word, PLAYER_ACTION_TAKE) || IsEquals(word, PLAYER_ACTION_DROP));
+	return (IsEquals(word, PLAYER_ACTION_ATTACK) || IsEquals(word, PLAYER_ACTION_UNEQUIP) || IsEquals(word, PLAYER_ACTION_EQUIP) || IsEquals(word, PLAYER_ACTION_GO) || IsEquals(word, PLAYER_ACTION_LOOK) || IsEquals(word, PLAYER_ACTION_TAKE) || IsEquals(word, PLAYER_ACTION_DROP));
 }
 
 const bool CommandParser::IsIgnoredWord(const string word) {

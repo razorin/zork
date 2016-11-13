@@ -40,7 +40,7 @@ void Entity::Look() const {
 }
 
 void Entity::Show() const {
-	cout << name << "\t" << description << endl;
+	cout << name << " \t\t\t " << description << endl;
 }
 
 Entity* Entity::Find(const string name) const {

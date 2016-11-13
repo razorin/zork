@@ -7,8 +7,10 @@ using namespace std;
 Item::Item(){
 }
 
-Item::Item(const string name, const string description) : Entity(name, description) {
+Item::Item(const string name, const string description, ITEM_TYPE item_type, int attack) : Entity(name, description) {
 	type = ENTITY_TYPE::ITEM;
+	this->item_type = item_type;
+	this->attack = attack;
 }
 
 

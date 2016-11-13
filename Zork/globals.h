@@ -9,12 +9,15 @@
 	PLAYER ACTIONS TOKENS
 */
 #define PLAYER_ACTION_LOOK "look" 
+#define PLAYER_ACTION_EQUIP "equip" 
+#define PLAYER_ACTION_UNEQUIP "unequip" 
 #define PLAYER_ACTION_TAKE "take"
 #define PLAYER_ACTION_DROP "drop"
 #define PLAYER_ACTION_HELP "help"
 #define PLAYER_ACTION_GO "go"
 //#define PLAYER_ACTION_PUT "put"
 #define PLAYER_ACTION_INVENTORY "inventory"
+#define PLAYER_ACTION_ATTACK "attack"
 
 /*
 	IGNORE WORDS
@@ -46,8 +49,17 @@ enum ENTITY_TYPE {
 	ROOM,
 	EXIT,
 	ITEM,
-	CREATURE,
+	MONSTER,
+	NPC,
 	PLAYER
+};
+
+enum ITEM_TYPE {
+	WEAPON,
+	CONTAINER,
+	CONSUMABLES,
+	INGREDIENTS
+
 };
 
 

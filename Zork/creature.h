@@ -7,11 +7,16 @@
 
 class Creature : public Entity {
 public:
-	Creature();
+	Creature(const string name, const string description, Room *location, int hit_points = 1, int attack_points = 1);
 	virtual ~Creature();
 	virtual void Update();
 
+	virtual bool IsLive();
+	virtual void ReceiveDamage(int damage);
+
 	Room *location;
+	int hit_points;
+	int attack_points;
 };
 
 #endif // !CREATURE_H
