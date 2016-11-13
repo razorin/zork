@@ -16,6 +16,40 @@ Room::Room(const string name, const string description) : Entity(name, descripti
 Room::~Room() {
 }
 
+void Room::Look() const {
+	cout << "\t\t" << name << endl;
+	cout << "--------------------------------------" << endl;
+	cout << description << endl;
+
+
+	for each (auto element in contains) {
+		if (element->type == ENTITY_TYPE::EXIT) {
+			Exit *exit = (Exit *)element;
+			GAME_DIRECTIONS direction = exit->direction;
+
+			cout << "There is a " << element->name << " to the " << Utils::GetDirectionName(exit->direction, exit->destination == this) <<endl;
+		}
+	}
+
+	for each (auto element in contains) {
+		if (element->type == ENTITY_TYPE::ITEM) {
+			cout << "There is a " << element->name << endl;
+		}
+	}
+
+	for each (auto element in contains) {
+		if (element->type == ENTITY_TYPE::NPC) {
+			cout << "There is a " << element->name << endl;
+		}
+	}
+
+	for each (auto element in contains) {
+		if (element->type == ENTITY_TYPE::MONSTER) {
+			cout << "There is a " << element->name << endl;
+		}
+	}
+}
+
 void Room::Update() {
 	//cout << "It's a room" << endl;
 	Entity::Update();

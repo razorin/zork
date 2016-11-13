@@ -7,11 +7,13 @@
 #include "utils.h"
 #include "exit.h"
 #include "monster.h"
+#include "npc.h"
 
 using namespace std;
 
-Player::Player(Room *location, int hit_points, int attack_points) : Creature("", "", location, hit_points, attack_points){
+Player::Player(Room *location, int hit_points, int attack_points) : Creature("Player", "Player", location, hit_points, attack_points){
 	type = ENTITY_TYPE::PLAYER;
+	gold = 30;
 }
 
 
@@ -55,6 +57,8 @@ void Player::Do(const vector<string> *arguments) {
 			Equip(arguments->at(1));
 		} else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_ATTACK)) {
 			Attack(arguments->at(1));
+		} else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_TALK)) {
+			Talk(arguments->at(1));
 		} else {
 			cout << "I don't understand you" << endl;
 		}
@@ -64,12 +68,50 @@ void Player::Do(const vector<string> *arguments) {
 			Take(arguments->at(1), arguments->at(2));
 		} else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_DROP)) {
 			Drop(arguments->at(1), arguments->at(2));
+		} else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_BUY)) {
+			Buy(arguments->at(1), arguments->at(2));
+		} else {
+			cout << "I don't understand you" << endl;
 		}
 
 		break;
 	default:
 		cout << "I don't understand you" << endl;
 		break;
+	}
+}
+
+void Player::Buy(const string item_name, const string trader) {
+	Npc *npc = (Npc *)location->Find(ENTITY_TYPE::NPC, trader);
+	if (npc == NULL) {
+		cout << "He's not here." << endl;
+	} else if (npc->npc_type != NPC_TYPE::TRADER) {
+		cout << "He hasn't anything to sell!" << endl;
+	} else{
+		Item *item = (Item *)npc->Find(ENTITY_TYPE::ITEM, item_name);
+		if (item == NULL) {
+			cout << npc->name << " hasn't such item" << endl;
+		} else {
+			if(item->price > gold) {
+				cout << "You haven't enough gold pieces!" << endl;
+			} else {
+				cout << "You have bought a " << item->name << endl;
+				npc->contains.remove(item);
+				contains.push_back(item);
+				gold -= item->price;
+			}			
+		}
+	}
+}
+
+void Player::Talk(const string npc_name) {
+	Npc *npc = (Npc *) location->Find(ENTITY_TYPE::NPC, npc_name);
+
+	if (npc == NULL) {
+		cout << "He's not here." << endl;
+	}
+	else {
+		npc->Speak();
 	}
 }
 
@@ -132,26 +174,21 @@ void Player::Drop(const string name, const string container_name) {
 }
 
 void Player::Go(const string name_direction) {
-	GAME_DIRECTIONS direction = GAME_DIRECTIONS::NONE;
-	if (CommandParser::IsEquals(name_direction, GAME_DIRECTION_NORTH)) {
-		direction = GAME_DIRECTIONS::NORTH;
-	} else if (CommandParser::IsEquals(name_direction, GAME_DIRECTION_EAST)) {
-		direction = GAME_DIRECTIONS::EAST;
-	} else if (CommandParser::IsEquals(name_direction, GAME_DIRECTION_WEST)) {
-		direction = GAME_DIRECTIONS::WEST;
-	} else if (CommandParser::IsEquals(name_direction, GAME_DIRECTION_SOUTH)) {
-		direction = GAME_DIRECTIONS::SOUTH;
-	}
+	GAME_DIRECTIONS direction = Utils::GetDirection(name_direction);
 
 	if (direction == GAME_DIRECTIONS::NONE)
 		cout << "Invalid direction to go" << endl;
 	else {
 		Exit *exit = location->GetExit(direction);
 		if (exit != NULL) {
-			if(exit->direction == direction)
+			location->contains.remove(this);
+			if (exit->direction == direction) 
 				location = exit->destination;
-			else
+			
+			else 
 				location = exit->source;
+			
+			location->contains.push_back(this);
 			Look();
 		}
 		else {
@@ -221,7 +258,6 @@ void Player::Look(const string name) const {
 
 void Player::Look() const {
 	location->Look();
-	cout << "Location name: " << location->name << endl;
 }
 
 void Player::Inventory() const {
@@ -229,6 +265,7 @@ void Player::Inventory() const {
 	for each (auto item in contains) {
 		item->Show();
 	}
+	cout << gold << " Gold pieces" << endl;
 }
 
 void Player::Attack(const string monster_name) {
@@ -236,7 +273,7 @@ void Player::Attack(const string monster_name) {
 	if (monster != NULL) {
 		if (monster->IsLive()) {
 			int total_attack = attack_points + (weapon == NULL ? 0 : weapon->attack);
-			cout << "Attack " << monster_name << " with a total damage of " << total_attack << endl;
+			cout << "You attack " << monster_name << " with a total damage of " << total_attack << endl;
 			monster->ReceiveDamage(total_attack);
 		} else {
 			cout << "Are you sure that attack a corpse is really a good idea?" << endl;

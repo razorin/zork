@@ -16,6 +16,7 @@ public:
 
 	Room *location;
 	int hit_points;
+	int max_hit_points;
 	int attack_points;
 };
 

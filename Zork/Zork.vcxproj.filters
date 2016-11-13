@@ -51,6 +51,9 @@
     <ClInclude Include="monster.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="npc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -84,6 +87,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="monster.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="npc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

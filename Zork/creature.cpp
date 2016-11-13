@@ -8,6 +8,7 @@ Creature::Creature(const string name, const string description, Room *location, 
 	this->location = location;
 	this->attack_points = attack_points;
 	this->hit_points = hit_points;
+	this->max_hit_points= hit_points;
 }
 
 
@@ -25,6 +26,8 @@ bool Creature::IsLive() {
 void Creature::ReceiveDamage(int damage) {
 	if (IsLive()) {
 		hit_points -= damage;
+		if (type == ENTITY_TYPE::PLAYER)
+			cout << "You have " << hit_points << "/" << max_hit_points << endl;
 		if (!IsLive()) {
 			if (type == ENTITY_TYPE::PLAYER)
 				cout << "You are dead." << endl;

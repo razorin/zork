@@ -11,7 +11,7 @@ class Room;
 class Exit :
 	public Entity {
 public:
-	Exit(const string name, const string description, const GAME_DIRECTIONS direction);
+	Exit(const string name, const string description, Room *source, Room *destination, const GAME_DIRECTIONS direction);
 	virtual ~Exit();
 	void Update();
 

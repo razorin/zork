@@ -15,7 +15,7 @@ public:
 	virtual ~Room();
 	void Update();
 	Exit* GetExit(const GAME_DIRECTIONS);
-	
+	void Look() const;
 };
 
 #endif // !ROOM_H

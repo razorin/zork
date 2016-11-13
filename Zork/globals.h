@@ -15,9 +15,11 @@
 #define PLAYER_ACTION_DROP "drop"
 #define PLAYER_ACTION_HELP "help"
 #define PLAYER_ACTION_GO "go"
-//#define PLAYER_ACTION_PUT "put"
+#define PLAYER_ACTION_BUY "buy"
+#define PLAYER_ACTION_SELL "sell"
 #define PLAYER_ACTION_INVENTORY "inventory"
 #define PLAYER_ACTION_ATTACK "attack"
+#define PLAYER_ACTION_TALK "talk"
 
 /*
 	IGNORE WORDS
@@ -28,14 +30,15 @@
 #define IGNORE_WORD_AND "and"
 #define IGNORE_WORD_FROM "from"
 #define IGNORE_WORD_INTO "into"
+#define IGNORE_WORD_WITH "with"
 
 /*
 	GAME DIRECTIONS STRINGS
 */
-#define GAME_DIRECTION_NORTH "north"
-#define GAME_DIRECTION_SOUTH "south"
-#define GAME_DIRECTION_EAST "east"
-#define GAME_DIRECTION_WEST "west"
+#define GAME_DIRECTION_NORTH "North"
+#define GAME_DIRECTION_SOUTH "South"
+#define GAME_DIRECTION_EAST "East"
+#define GAME_DIRECTION_WEST "West"
 
 enum GAME_DIRECTIONS {
 	NONE, 
@@ -60,6 +63,11 @@ enum ITEM_TYPE {
 	CONSUMABLES,
 	INGREDIENTS
 
+};
+
+enum NPC_TYPE {
+	SPEAKER,
+	TRADER,
 };
 
 

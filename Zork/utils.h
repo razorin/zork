@@ -28,6 +28,8 @@ public:
 	virtual ~Utils();
 
 	static const GAME_DIRECTIONS DirectionInverse(const GAME_DIRECTIONS direction);
+	static const GAME_DIRECTIONS GetDirection(const string name_direction, bool inverse = false);
+	static const string GetDirectionName(const GAME_DIRECTIONS direction, bool inverse = false);
 	
 };
 
