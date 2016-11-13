@@ -21,7 +21,7 @@ void Monster::Update() {
 			Player *player = (Player *)location->Find(ENTITY_TYPE::PLAYER, "player");
 			if (player == NULL) {
 				attack_ready = false;
-			} else {
+			} else if(player->IsLive()){
 				cout << name << " attacks you with " << attack_points << " points of damage" << endl;
 				player->ReceiveDamage(attack_points);
 			}

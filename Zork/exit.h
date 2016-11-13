@@ -11,13 +11,13 @@ class Room;
 class Exit :
 	public Entity {
 public:
-	Exit(const string name, const string description, Room *source, Room *destination, const GAME_DIRECTIONS direction);
+	Exit(const string name, const string description, Room *source, Room *destination, const GAME_DIRECTION direction);
 	virtual ~Exit();
 	void Update();
 
 	Room *source;
 	Room *destination;
-	GAME_DIRECTIONS direction;
+	GAME_DIRECTION direction;
 	bool opened;
 };
 

@@ -52,7 +52,7 @@ const vector<string> * CommandParser::ParseCommand(const string command) {
 }
 
 const bool CommandParser::IsToken(const string word) {
-	return (IsEquals(word, PLAYER_ACTION_SELL) || IsEquals(word, PLAYER_ACTION_BUY) || IsEquals(word, PLAYER_ACTION_TALK) || IsEquals(word, PLAYER_ACTION_ATTACK) || IsEquals(word, PLAYER_ACTION_UNEQUIP) || IsEquals(word, PLAYER_ACTION_EQUIP) || IsEquals(word, PLAYER_ACTION_GO) || IsEquals(word, PLAYER_ACTION_LOOK) || IsEquals(word, PLAYER_ACTION_TAKE) || IsEquals(word, PLAYER_ACTION_DROP));
+	return (IsEquals(word, PLAYER_ACTION_USE) || IsEquals(word, PLAYER_ACTION_SELL) || IsEquals(word, PLAYER_ACTION_BUY) || IsEquals(word, PLAYER_ACTION_TALK) || IsEquals(word, PLAYER_ACTION_ATTACK) || IsEquals(word, PLAYER_ACTION_UNEQUIP) || IsEquals(word, PLAYER_ACTION_EQUIP) || IsEquals(word, PLAYER_ACTION_GO) || IsEquals(word, PLAYER_ACTION_LOOK) || IsEquals(word, PLAYER_ACTION_TAKE) || IsEquals(word, PLAYER_ACTION_DROP));
 }
 
 const bool CommandParser::IsIgnoredWord(const string word) {
@@ -78,30 +78,30 @@ Utils::Utils() {
 Utils::~Utils() {
 }
 
-const GAME_DIRECTIONS Utils::DirectionInverse(const GAME_DIRECTIONS direction) {
-	if (direction == GAME_DIRECTIONS::NORTH) {
-		return GAME_DIRECTIONS::SOUTH;
-	} else if (direction == GAME_DIRECTIONS::SOUTH) {
-		return GAME_DIRECTIONS::NORTH;
-	} else if (direction == GAME_DIRECTIONS::EAST) {
-		return GAME_DIRECTIONS::WEST;
-	} else if (direction == GAME_DIRECTIONS::WEST) {
-		return GAME_DIRECTIONS::EAST;
+const GAME_DIRECTION Utils::DirectionInverse(const GAME_DIRECTION direction) {
+	if (direction == GAME_DIRECTION::NORTH) {
+		return GAME_DIRECTION::SOUTH;
+	} else if (direction == GAME_DIRECTION::SOUTH) {
+		return GAME_DIRECTION::NORTH;
+	} else if (direction == GAME_DIRECTION::EAST) {
+		return GAME_DIRECTION::WEST;
+	} else if (direction == GAME_DIRECTION::WEST) {
+		return GAME_DIRECTION::EAST;
 	}
 
-	return GAME_DIRECTIONS::NONE;
+	return GAME_DIRECTION::NONE;
 }
 
-const GAME_DIRECTIONS Utils::GetDirection(const string name_direction, bool inverse){
-	GAME_DIRECTIONS direction = GAME_DIRECTIONS::NONE;
+const GAME_DIRECTION Utils::GetDirection(const string name_direction, bool inverse){
+	GAME_DIRECTION direction = GAME_DIRECTION::NONE;
 	if (CommandParser::IsEquals(name_direction, GAME_DIRECTION_NORTH)) {
-		direction = GAME_DIRECTIONS::NORTH;
+		direction = GAME_DIRECTION::NORTH;
 	} else if (CommandParser::IsEquals(name_direction, GAME_DIRECTION_EAST)) {
-		direction = GAME_DIRECTIONS::EAST;
+		direction = GAME_DIRECTION::EAST;
 	} else if (CommandParser::IsEquals(name_direction, GAME_DIRECTION_WEST)) {
-		direction = GAME_DIRECTIONS::WEST;
+		direction = GAME_DIRECTION::WEST;
 	} else if (CommandParser::IsEquals(name_direction, GAME_DIRECTION_SOUTH)) {
-		direction = GAME_DIRECTIONS::SOUTH;
+		direction = GAME_DIRECTION::SOUTH;
 	}
 
 	if (inverse)
@@ -111,20 +111,20 @@ const GAME_DIRECTIONS Utils::GetDirection(const string name_direction, bool inve
 }
 
 
-const string Utils::GetDirectionName(const GAME_DIRECTIONS direction, bool inverse) {
+const string Utils::GetDirectionName(const GAME_DIRECTION direction, bool inverse) {
 	string direction_name = "";
-	GAME_DIRECTIONS direction_result = direction;
+	GAME_DIRECTION direction_result = direction;
 	
 	if (inverse)
 		direction_result = DirectionInverse(direction_result);
 
-	if (direction_result == GAME_DIRECTIONS::NORTH) {
+	if (direction_result == GAME_DIRECTION::NORTH) {
 		direction_name = GAME_DIRECTION_NORTH;
-	} else if (direction_result == GAME_DIRECTIONS::EAST) {
+	} else if (direction_result == GAME_DIRECTION::EAST) {
 		direction_name = GAME_DIRECTION_EAST;
-	} else if (direction_result == GAME_DIRECTIONS::WEST) {
+	} else if (direction_result == GAME_DIRECTION::WEST) {
 		direction_name = GAME_DIRECTION_WEST;
-	} else if (direction_result == GAME_DIRECTIONS::SOUTH) {
+	} else if (direction_result == GAME_DIRECTION::SOUTH) {
 		direction_name = GAME_DIRECTION_SOUTH;
 	}
 		

@@ -27,9 +27,9 @@ public:
 	Utils();
 	virtual ~Utils();
 
-	static const GAME_DIRECTIONS DirectionInverse(const GAME_DIRECTIONS direction);
-	static const GAME_DIRECTIONS GetDirection(const string name_direction, bool inverse = false);
-	static const string GetDirectionName(const GAME_DIRECTIONS direction, bool inverse = false);
+	static const GAME_DIRECTION DirectionInverse(const GAME_DIRECTION direction);
+	static const GAME_DIRECTION GetDirection(const string name_direction, bool inverse = false);
+	static const string GetDirectionName(const GAME_DIRECTION direction, bool inverse = false);
 	
 };
 

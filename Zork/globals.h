@@ -20,6 +20,7 @@
 #define PLAYER_ACTION_INVENTORY "inventory"
 #define PLAYER_ACTION_ATTACK "attack"
 #define PLAYER_ACTION_TALK "talk"
+#define PLAYER_ACTION_USE "use"
 
 /*
 	IGNORE WORDS
@@ -40,7 +41,7 @@
 #define GAME_DIRECTION_EAST "East"
 #define GAME_DIRECTION_WEST "West"
 
-enum GAME_DIRECTIONS {
+enum GAME_DIRECTION {
 	NONE, 
 	NORTH,
 	SOUTH,
@@ -60,14 +61,21 @@ enum ENTITY_TYPE {
 enum ITEM_TYPE {
 	WEAPON,
 	CONTAINER,
-	CONSUMABLES,
-	INGREDIENTS
+	CONSUMABLE,
+	TROPHY
 
 };
 
 enum NPC_TYPE {
 	SPEAKER,
 	TRADER,
+};
+
+enum GAME_STATE {
+	CONTINUE,
+	GAME_OVER,
+	END,
+	QUIT
 };
 
 

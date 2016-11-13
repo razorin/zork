@@ -27,7 +27,7 @@ void Creature::ReceiveDamage(int damage) {
 	if (IsLive()) {
 		hit_points -= damage;
 		if (type == ENTITY_TYPE::PLAYER)
-			cout << "You have " << hit_points << "/" << max_hit_points << endl;
+			cout << "You have " << hit_points << "/" << max_hit_points << " HP" << endl;
 		if (!IsLive()) {
 			if (type == ENTITY_TYPE::PLAYER)
 				cout << "You are dead." << endl;

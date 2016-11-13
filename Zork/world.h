@@ -5,6 +5,7 @@
 #include "entity.h"
 #include <vector>
 #include "player.h"
+#include "monster.h"
 
 class World
 {
@@ -12,11 +13,12 @@ public:
 	World();
 	virtual ~World();
 
-	void Update(const vector<string> *arguments);
+	GAME_STATE Update(const vector<string> *arguments);
 
 
 	vector<Entity*> entities;
 	Player *player;
+	Monster *final_boss;
 
 
 };

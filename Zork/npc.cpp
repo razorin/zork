@@ -17,15 +17,19 @@ Npc::~Npc() {
 }
 
 void Npc::Speak() const {
-	cout << name << " says: \"" << dialog << "\"" << endl;
-	if (npc_type == NPC_TYPE::TRADER) {
-		cout << "Name\t\tDescription\t\tPrice" << endl;
-		for each (auto entity in contains) {
-			if (entity->type == ENTITY_TYPE::ITEM) {
-				Item *item = (Item *)entity;
-				cout << item->name << "\t\t"<< item->description << "\t\t" << item->price << endl;
+	if (contains.size() > 0) {
+		cout << name << " says: \"" << dialog << "\"" << endl;
+		if (npc_type == NPC_TYPE::TRADER) {
+			cout << "Name\t\tDescription\t\tPrice" << endl;
+			for each (auto entity in contains) {
+				if (entity->type == ENTITY_TYPE::ITEM) {
+					Item *item = (Item *)entity;
+					cout << item->name << "\t\t"<< item->description << "\t\t" << item->price << endl;
+				}
 			}
 		}
+	} else{
+		cout << "Sorry but I have anything to sell right now." << endl;
 	}
 }
 

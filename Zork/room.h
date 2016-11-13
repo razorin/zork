@@ -14,7 +14,7 @@ public:
 	Room(const string name, const string description);
 	virtual ~Room();
 	void Update();
-	Exit* GetExit(const GAME_DIRECTIONS);
+	Exit* GetExit(const GAME_DIRECTION);
 	void Look() const;
 };
 

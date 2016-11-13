@@ -59,6 +59,8 @@ void Player::Do(const vector<string> *arguments) {
 			Attack(arguments->at(1));
 		} else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_TALK)) {
 			Talk(arguments->at(1));
+		} else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_USE)) {
+			Use(arguments->at(1));
 		} else {
 			cout << "I don't understand you" << endl;
 		}
@@ -174,9 +176,9 @@ void Player::Drop(const string name, const string container_name) {
 }
 
 void Player::Go(const string name_direction) {
-	GAME_DIRECTIONS direction = Utils::GetDirection(name_direction);
+	GAME_DIRECTION direction = Utils::GetDirection(name_direction);
 
-	if (direction == GAME_DIRECTIONS::NONE)
+	if (direction == GAME_DIRECTION::NONE)
 		cout << "Invalid direction to go" << endl;
 	else {
 		Exit *exit = location->GetExit(direction);
@@ -258,6 +260,22 @@ void Player::Look(const string name) const {
 
 void Player::Look() const {
 	location->Look();
+}
+
+void Player::Use(const string name) {
+	Item *item = (Item *)Find(ENTITY_TYPE::ITEM, name);
+	if (item == NULL)
+		cout << "You haven't such item!" << endl;
+	else {
+		contains.remove(item);
+		int prev_hit_points = hit_points;
+		this->hit_points += item->attack;
+		if (hit_points > max_hit_points)
+			hit_points = max_hit_points;
+		cout << "You have recovered " << hit_points - prev_hit_points << " HP" << endl;
+		cout << "You have " << hit_points << "/" << max_hit_points << " HP" <<endl;
+	}
+		
 }
 
 void Player::Inventory() const {

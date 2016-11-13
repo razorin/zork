@@ -25,7 +25,7 @@ void Room::Look() const {
 	for each (auto element in contains) {
 		if (element->type == ENTITY_TYPE::EXIT) {
 			Exit *exit = (Exit *)element;
-			GAME_DIRECTIONS direction = exit->direction;
+			GAME_DIRECTION direction = exit->direction;
 
 			cout << "There is a " << element->name << " to the " << Utils::GetDirectionName(exit->direction, exit->destination == this) <<endl;
 		}
@@ -55,11 +55,11 @@ void Room::Update() {
 	Entity::Update();
 }
 
-Exit* Room::GetExit(const GAME_DIRECTIONS direction) {
+Exit* Room::GetExit(const GAME_DIRECTION direction) {
 	for (auto it = contains.begin(); it != contains.end(); ++it) {
 		if ((*it)->type == ENTITY_TYPE::EXIT) {
 			Exit* ex = (Exit*)*it;
-			GAME_DIRECTIONS inverse = Utils::DirectionInverse(ex->direction);
+			GAME_DIRECTION inverse = Utils::DirectionInverse(ex->direction);
 			if ((*ex->source) == (*this) && ex->direction == direction) {
 				return ex;
 			} else if ((*ex->destination) == (*this) &&  direction == inverse) {
