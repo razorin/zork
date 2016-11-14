@@ -1,4 +1,7 @@
 #pragma once
+#ifndef MONSTER_H
+#define MONSTER_H
+
 #include "creature.h"
 class Monster :
 	public Creature {
@@ -10,4 +13,6 @@ private:
 	bool attack_ready;
 	
 };
+
+#endif // !MONSTER_H
 

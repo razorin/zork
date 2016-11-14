@@ -15,6 +15,12 @@ Npc::Npc(const string name, const string description, Room *location, const stri
 
 
 Npc::~Npc() {
+	for each (auto quest in quests) {
+		delete quest;
+		quest = NULL;
+	}
+
+	quests.clear();
 }
 
 void Npc::Speak() const {

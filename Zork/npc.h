@@ -1,4 +1,9 @@
 #pragma once
+
+
+#ifndef NPC_H
+#define NPC_H
+
 #include "creature.h"
 #include "quest.h"
 #include <vector>
@@ -16,4 +21,5 @@ public:
 	NPC_TYPE npc_type;
 	vector<Quest*> quests;
 };
+#endif // !NPC_H
 

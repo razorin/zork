@@ -250,12 +250,13 @@ void Player::Look(const string name) const {
 	Entity *item = Find(name);
 	if (item != NULL)
 		item->Look();
-	else
+	else {
 		item = location->Find(name);
 		if(item != NULL)
 			item->Look();
 		else
 			cout << "There is not such item" << endl;
+	}
 }
 
 void Player::Look() const {

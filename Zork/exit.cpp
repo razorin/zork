@@ -9,14 +9,14 @@ Exit::Exit(const string name, const string description, Room *source, Room *dest
 	(this)->direction = direction;
 	this->source = source;
 	this->destination = destination;
+
+	this->source->contains.push_back(this);
+	this->destination->contains.push_back(this);
 }
 
 
 Exit::~Exit() {
-	delete source;
-	source = NULL;
-	delete destination;
-	destination = NULL;
+
 }
 
 void Exit::Update() {

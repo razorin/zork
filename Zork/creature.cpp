@@ -9,6 +9,8 @@ Creature::Creature(const string name, const string description, Room *location, 
 	this->attack_points = attack_points;
 	this->hit_points = hit_points;
 	this->max_hit_points= hit_points;
+
+	this->location->contains.push_back(this);
 }
 
 

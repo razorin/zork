@@ -16,7 +16,7 @@ Entity::Entity(const string name, const string description) {
 
 
 Entity::~Entity() {
-
+	contains.clear();
 }
 
 void Entity::Update() {
