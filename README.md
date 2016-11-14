@@ -11,7 +11,7 @@ There is a list with all commands you can use in game — word between square br
 
 * equip
 * equip \<item object>
-* * unequip \<item object>
+* unequip \<item object>
 * invetory
 * attack [to] \<monster>
 * talk [to] \<npc name>
