@@ -52,7 +52,7 @@ void Room::Look() const {
 
 void Room::Update() {
 	//cout << "It's a room" << endl;
-	Entity::Update();
+	//Entity::Update();
 }
 
 Exit* Room::GetExit(const GAME_DIRECTION direction) {

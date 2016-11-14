@@ -1,4 +1,6 @@
 #pragma once
+#ifndef QUEST_H
+#define QUEST_H
 #include "monster.h"
 #include <string>
 
@@ -12,4 +14,5 @@ public:
 	Quest(Monster *monster, int gold, const string message);
 	virtual ~Quest();
 };
+#endif // !QUEST_H
 

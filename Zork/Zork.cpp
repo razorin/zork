@@ -25,18 +25,21 @@ int main() {
 
 	while (key != KEYBOARD_KEY_ESCAPE && game_state == GAME_STATE::CONTINUE) {
 		key = _getch();
-		if (key == KEYBOARD_KEY_ESCAPE)
-			game_state = GAME_STATE::QUIT;
-		else if (key == KEYBOARD_KEY_ENTER) {
-			auto arguments = CommandParser::ParseCommand(command);
-			game_state =  world->Update(arguments);
+			if (key == KEYBOARD_KEY_ESCAPE)
+				game_state = GAME_STATE::QUIT;
+			else if (key == KEYBOARD_KEY_ENTER) {
+				auto arguments = CommandParser::ParseCommand(command);
+				game_state =  world->Update(arguments);
 
-			command = "";
-			continue;
-		}
-		else {
-			command += key;
-			cout << command << endl;
+				command = "";
+				continue;
+			} else if (key == KEYBOARD_KEY_BACKSPACE) {
+				cout << "You can't erase anything!" << endl;
+			} else if (key >= 32 && key <= 126) {
+				command += key;
+				cout << command << endl;
+			} else {
+			cout << "Input character not allowed!. Are you sure that you want to write that?" << endl;
 		}
 
 	}
@@ -48,6 +51,9 @@ int main() {
 
 		_getch();
 	}
+	delete world;
+	world = NULL;
+
 	return 0;
 }
 
