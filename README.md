@@ -1,7 +1,7 @@
 # Zorkian
 ##Welcome to Zorkian!
 
-Zorkian is a zork style game. You play as a young monster hunter who has received his first job: You play as a young monster hunter that have received his first job: killing a troll that threatens the tranquility of the small island of Zorkian.
+Zorkian is a zork style game. You play as a young monster hunter who has received his first job: killing a troll that threatens the tranquility of the small island of Zorkian.
 
 Good luck!
 
