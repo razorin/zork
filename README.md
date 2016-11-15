@@ -23,7 +23,25 @@ There is a list with all commands you can use in game — word between square br
 * drop \<item>
 * drop \<item> [in|into] \<item>
 * look
-* look \<item>
+* look [to] \<item>
+
+##Roadmap
+- [ ] Cast spells skills and add magic points
+- [ ] Recruit allies to help you
+- [ ] Allow monster to move around map
+- [ ] Add skill points and unlockeable skills
+- [ ] Add defense attribute
+- [ ] Create game editor
+- [ ] Add sell command
+- [ ] Add quests list
+- [ ] Save & load data
+- [ ] Add more equip items (equip for both hands, armor, accesories)
+- [ ] Sell command
+- [ ] Add status to creatures (such as poison, curse, silent, confuse)
+
+##FAQ
+- I found a bug! I was typping and when I try to edit...
+Nope. It's not a bug. Seriously. I think that this feature add some penalty if you are not focused on the game :)
 
 ##Author
 Roberto Azorín Ferri
