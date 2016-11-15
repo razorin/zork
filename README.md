@@ -46,3 +46,8 @@ Nope. It's not a bug. Seriously. I think that this feature add some penalty if y
 ##Author
 Roberto Azorín Ferri
 
+##Project Home
+https://github.com/razorin/zork
+
+##License
+This project is under MIT License
