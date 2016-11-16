@@ -149,7 +149,7 @@ World::~World() {
 	final_boss = NULL;
 }
 
-GAME_STATE World::Update(const vector<string> *arguments) {
+GAME_STATE World::Update(const vector<string> arguments) {
 	player->Do(arguments);
 	for each (auto entity in entities) {
 		entity->Update();

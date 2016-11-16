@@ -24,11 +24,12 @@ int main() {
 	World *world = new World();
 
 	while (key != KEYBOARD_KEY_ESCAPE && game_state == GAME_STATE::CONTINUE) {
+		vector<string> arguments;
 		key = _getch();
 			if (key == KEYBOARD_KEY_ESCAPE)
 				game_state = GAME_STATE::QUIT;
 			else if (key == KEYBOARD_KEY_ENTER) {
-				auto arguments = CommandParser::ParseCommand(command);
+				CommandParser::ParseCommand(command, arguments);
 				game_state =  world->Update(arguments);
 
 				command = "";

@@ -13,7 +13,7 @@ public:
 	World();
 	virtual ~World();
 
-	GAME_STATE Update(const vector<string> *arguments);
+	GAME_STATE Update(const vector<string> arguments);
 
 
 	vector<Entity*> entities;

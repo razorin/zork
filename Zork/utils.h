@@ -14,7 +14,7 @@ public:
 	CommandParser();
 	virtual ~CommandParser();
 
-	static const vector<string> * ParseCommand(const string command);
+	static const void ParseCommand(const string command, vector<string> & arguments);
 	static const bool IsToken(const string word);
 	static const bool IsIgnoredWord(const string word);
 	static const bool IsEquals(string a, string b);

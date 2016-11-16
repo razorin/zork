@@ -11,7 +11,7 @@ public:
 	Player(Room *location, int hit_points, int attack_points);
 	virtual ~Player();
 	void Update();
-	void Do(const vector<string> *arguments);
+	void Do(const vector<string> arguments);
 	Item *weapon;
 	int gold;
 	void Look() const;

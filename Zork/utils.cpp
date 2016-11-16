@@ -9,8 +9,7 @@ CommandParser::CommandParser() {
 CommandParser::~CommandParser() {
 }
 
-const vector<string> * CommandParser::ParseCommand(const string command) {
-	vector<string> *result = new vector<string>();
+const void CommandParser::ParseCommand(const string command, vector<string> & arguments) {
 	string word = "";
 	string multiple_words = "";
 	for (auto it = command.begin(); it != command.end(); ++it) {
@@ -24,14 +23,14 @@ const vector<string> * CommandParser::ParseCommand(const string command) {
 			}
 			if (CommandParser::IsToken(word)) {
 				if (multiple_words != "")
-					result->push_back(multiple_words);
-				result->push_back(word);
+					arguments.push_back(multiple_words);
+				arguments.push_back(word);
 				multiple_words = "";
 			}
 			else if (CommandParser::IsIgnoredWord(word) == false) {
 				if (is_last_element) {
 					multiple_words += word;
-					result->push_back(multiple_words);
+					arguments.push_back(multiple_words);
 				}
 				else {
 					multiple_words += word + " ";;
@@ -39,7 +38,7 @@ const vector<string> * CommandParser::ParseCommand(const string command) {
 			}
 			else if (CommandParser::IsIgnoredWord(word) == true) {
 				if (multiple_words != "") {
-					result->push_back(multiple_words);
+					arguments.push_back(multiple_words);
 					multiple_words = "";
 				}
 			}
@@ -48,7 +47,6 @@ const vector<string> * CommandParser::ParseCommand(const string command) {
 		}
 	}
 
-	return result;
 }
 
 const bool CommandParser::IsToken(const string word) {

@@ -24,54 +24,54 @@ void Player::Update() {
 	//cout << "Player!!" << endl;
 }
 
-void Player::Do(const vector<string> *arguments) {
-	switch (arguments->size()) {
+void Player::Do(const vector<string> arguments) {
+	switch (arguments.size()) {
 	case 0:
 		cout << "I don't understand you" << endl;
 		break;
 	case 1:
-		if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_LOOK)) {
+		if (CommandParser::IsEquals(arguments.at(0), PLAYER_ACTION_LOOK)) {
 			Look();
-		} else if(CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_INVENTORY)){
+		} else if(CommandParser::IsEquals(arguments.at(0), PLAYER_ACTION_INVENTORY)){
 			Inventory();
 		}
-		else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_EQUIP)) {
+		else if (CommandParser::IsEquals(arguments.at(0), PLAYER_ACTION_EQUIP)) {
 			Equip();
 		}
-		else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_UNEQUIP)) {
+		else if (CommandParser::IsEquals(arguments.at(0), PLAYER_ACTION_UNEQUIP)) {
 			UnEquip();
 		} else{
 			cout << "I don't understand you" << endl;
 		}
 		break;
 	case 2:
-		if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_LOOK)) {
-			Look(arguments->at(1));
-		} else if(CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_TAKE)){
-			Take(arguments->at(1));
-		} else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_DROP)) {
-			Drop(arguments->at(1));
-		} else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_GO)) {
-			Go(arguments->at(1));
-		} else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_EQUIP)) {
-			Equip(arguments->at(1));
-		} else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_ATTACK)) {
-			Attack(arguments->at(1));
-		} else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_TALK)) {
-			Talk(arguments->at(1));
-		} else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_USE)) {
-			Use(arguments->at(1));
+		if (CommandParser::IsEquals(arguments.at(0), PLAYER_ACTION_LOOK)) {
+			Look(arguments.at(1));
+		} else if(CommandParser::IsEquals(arguments.at(0), PLAYER_ACTION_TAKE)){
+			Take(arguments.at(1));
+		} else if (CommandParser::IsEquals(arguments.at(0), PLAYER_ACTION_DROP)) {
+			Drop(arguments.at(1));
+		} else if (CommandParser::IsEquals(arguments.at(0), PLAYER_ACTION_GO)) {
+			Go(arguments.at(1));
+		} else if (CommandParser::IsEquals(arguments.at(0), PLAYER_ACTION_EQUIP)) {
+			Equip(arguments.at(1));
+		} else if (CommandParser::IsEquals(arguments.at(0), PLAYER_ACTION_ATTACK)) {
+			Attack(arguments.at(1));
+		} else if (CommandParser::IsEquals(arguments.at(0), PLAYER_ACTION_TALK)) {
+			Talk(arguments.at(1));
+		} else if (CommandParser::IsEquals(arguments.at(0), PLAYER_ACTION_USE)) {
+			Use(arguments.at(1));
 		} else {
 			cout << "I don't understand you" << endl;
 		}
 		break;
 	case 3:
-		if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_TAKE)) {
-			Take(arguments->at(1), arguments->at(2));
-		} else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_DROP)) {
-			Drop(arguments->at(1), arguments->at(2));
-		} else if (CommandParser::IsEquals(arguments->at(0), PLAYER_ACTION_BUY)) {
-			Buy(arguments->at(1), arguments->at(2));
+		if (CommandParser::IsEquals(arguments.at(0), PLAYER_ACTION_TAKE)) {
+			Take(arguments.at(1), arguments.at(2));
+		} else if (CommandParser::IsEquals(arguments.at(0), PLAYER_ACTION_DROP)) {
+			Drop(arguments.at(1), arguments.at(2));
+		} else if (CommandParser::IsEquals(arguments.at(0), PLAYER_ACTION_BUY)) {
+			Buy(arguments.at(1), arguments.at(2));
 		} else {
 			cout << "I don't understand you" << endl;
 		}
