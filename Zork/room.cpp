@@ -17,9 +17,7 @@ Room::~Room() {
 }
 
 void Room::Look() const {
-	cout << "\t\t" << name << endl;
-	cout << "--------------------------------------" << endl;
-	cout << description << endl;
+	Entity::Look();
 
 
 	for each (auto element in contains) {

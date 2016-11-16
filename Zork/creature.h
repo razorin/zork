@@ -11,8 +11,10 @@ public:
 	virtual ~Creature();
 	virtual void Update();
 
-	virtual bool IsLive();
+	virtual bool IsLive() const;
 	virtual void ReceiveDamage(int damage);
+
+	void Look() const;
 
 	Room *location;
 	int hit_points;

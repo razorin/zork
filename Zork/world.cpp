@@ -19,9 +19,9 @@ World::World() {
 	entities.push_back(chest);
 	chest->contains.push_back(sword);
 
-	Item *spear = new Item("Rusty Spear", "A rusty spear. Increase your attack (+1)", ITEM_TYPE::WEAPON, 5, 70);
+	Item *spear = new Item("Rusty Spear", "A rusty spear. Increase your attack (+5)", ITEM_TYPE::WEAPON, 5, 60);
 	entities.push_back(spear);
-	Item *dagger = new Item("Silver Dagger", "A silver dagger. Increase your attack (+3)", ITEM_TYPE::WEAPON, 4, 50);
+	Item *dagger = new Item("Silver Dagger", "A silver dagger. Increase your attack (+4)", ITEM_TYPE::WEAPON, 4, 40);
 	entities.push_back(dagger);
 	Item *knife = new Item("Sharp Knife", "A sharp knife. Increase your attack (+2)", ITEM_TYPE::WEAPON, 2, 15);
 	entities.push_back(knife);
@@ -49,7 +49,7 @@ World::World() {
 	entities.push_back(mountain);
 	Room *plain = new Room("Great Plain", "A great green plain");
 	entities.push_back(plain);
-	Room *explorer_basecamp = new Room("Explorer's Basecamp", "A small camp of egxplorers. Everything is stirred up even though the fire is still hot. Among the campsites there are human remains and blood");
+	Room *explorer_basecamp = new Room("Explorer's Basecamp", "A small camp of explorers. Everything is stirred up even though the fire is still hot. Among the campsites there are human remains and blood");
 	entities.push_back(explorer_basecamp);
 	Room *forest_north = new Room("Forest", "You are surrounded by trees You can feel a tranquility that bothers you ...");
 	entities.push_back(forest_north);
@@ -106,7 +106,7 @@ World::World() {
 	entities.push_back(chaman);
 	Npc *mayor = new Npc("Mayor", "", village, "I know you are here for the troll that killed some of us two weeks ago but could you help us with other problems? We would be very grateful. If you want more info about the troll go east and talk to explorers.", NPC_TYPE::SPEAKER);
 	entities.push_back(mayor);
-	Npc *explorer_quest = new Npc("Explorer", "", plain, "Oh god ... I saw him I swear I saw him ... a black shadow with ruby ​​eyes ... he attacked us one by one ... I think I'm the only one left...", NPC_TYPE::SPEAKER);
+	Npc *explorer_quest = new Npc("Explorer", "", plain, "Oh god ... I saw it...I swear...I saw it... A black shadow with ruby ​​eyes... it attacked us one by one... I think I'm the only one left...", NPC_TYPE::SPEAKER);
 
 	Quest *crab_request = new Quest(giant_crab, 10, "There is a giant crab on the beach. It is south of here. Lately it is attacking fishermans and children who are going to play there. Could you handle it?");
 	Quest *snake_quest = new Quest(giant_snake, 25, "There is a giant serpent that has devoured some guards and cattle. You have to go east until you reach the great plain and then north to find it. Could you help us with it?");

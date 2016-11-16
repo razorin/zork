@@ -90,19 +90,7 @@ void Player::Buy(const string item_name, const string trader) {
 	} else if (npc->npc_type != NPC_TYPE::TRADER) {
 		cout << "He hasn't anything to sell!" << endl;
 	} else{
-		Item *item = (Item *)npc->Find(ENTITY_TYPE::ITEM, item_name);
-		if (item == NULL) {
-			cout << npc->name << " hasn't such item" << endl;
-		} else {
-			if(item->price > gold) {
-				cout << "You haven't enough gold pieces!" << endl;
-			} else {
-				cout << "You have bought a " << item->name << endl;
-				npc->contains.remove(item);
-				contains.push_back(item);
-				gold -= item->price;
-			}			
-		}
+		npc->Sell(item_name, this);
 	}
 }
 

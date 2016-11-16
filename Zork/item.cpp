@@ -21,3 +21,13 @@ Item::~Item() {
 void Item::Update() {
 	//cout << "Item updated!!!" << endl;
 }
+
+void Item::Look() const {
+	Entity::Look();
+	if (contains.size() > 0)
+		cout << "Also there are: " << endl;
+
+	for each (auto element in contains) {
+		element->Look();
+	}
+}

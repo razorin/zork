@@ -21,7 +21,7 @@ void Creature::Update() {
 	//cout << " Creature!!! " << endl;
 }
 
-bool Creature::IsLive() {
+bool Creature::IsLive() const {
 	return hit_points > 0;
 }
 
@@ -36,6 +36,15 @@ void Creature::ReceiveDamage(int damage) {
 			else
 				cout << name << " is dead." << endl;
 		}
+	}
+}
+
+void Creature::Look() const {
+	if (IsLive()) {
+		Entity::Look();
+	}
+	else {
+		cout << "There is a " << name << " corpse" << endl;
 	}
 }
 

@@ -28,15 +28,7 @@ void Entity::Update() {
 void Entity::Look() const {
 	cout << "\t" << name << endl;
 	cout << "__________________________" << endl;
-	cout << description << endl;
-
-	if(contains.size() > 0)
-		cout << "Also there are: " << endl;
-
-	for each (auto element in contains) {
-		element->Look();
-	}
-	
+	cout << description << endl;	
 }
 
 void Entity::Show() const {

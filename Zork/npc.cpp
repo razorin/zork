@@ -54,3 +54,22 @@ void Npc::Speak() const {
 		}
 }
 
+void Npc::Sell(const string item_name, Player *player) {
+	Item *item = (Item *)Find(ENTITY_TYPE::ITEM, item_name);
+	if (item == NULL) {
+		cout << name << " hasn't such item" << endl;
+	}
+	else {
+		if (item->price > player->gold) {
+			cout << "You haven't enough gold pieces!" << endl;
+		}
+		else {
+			cout << "You have bought a " << item->name << endl;
+			contains.remove(item);
+			player->contains.push_back(item);
+			player->gold -= item->price;
+		}
+	}
+}
+
+

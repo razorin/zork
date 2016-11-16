@@ -7,6 +7,7 @@
 #include "creature.h"
 #include "quest.h"
 #include <vector>
+#include "player.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ public:
 	Npc(const string name, const string description, Room *location, const string dialog, const NPC_TYPE npc_type);
 	virtual ~Npc();
 	void Speak() const;
+	void Sell(const string item_name, Player *player);
 
 	string dialog;
 	NPC_TYPE npc_type;
